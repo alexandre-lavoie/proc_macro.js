@@ -1,12 +1,12 @@
 {
   "name": "proc_macro",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A JavaScript implementation of Proc_Macros",
   "main": "lib/index.js",
   "types": "lib",
   "scripts": {
     "test": "jest",
-    "build": "tsc",
+    "build": "rm ./lib/* && tsc",
     "dev": "ts-node ./src/index.ts"
   },
   "repository": {
