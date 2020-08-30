@@ -1,0 +1,30 @@
+{
+  "name": "proc_macro",
+  "version": "0.0.1",
+  "description": "A JavaScript implementation of Proc_Macros",
+  "main": "lib/index.js",
+  "types": "lib",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "dev": "ts-node ./src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexandre-lavoie/proc_macro.js.git"
+  },
+  "author": "Alexandre Lavoie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexandre-lavoie/proc_macro.js/issues"
+  },
+  "homepage": "https://github.com/alexandre-lavoie/proc_macro.js#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.10",
+    "@types/node": "^14.6.2",
+    "jest": "^26.4.2",
+    "ts-jest": "^26.3.0",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
+  }
+}
