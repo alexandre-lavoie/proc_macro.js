@@ -6,7 +6,7 @@
   "types": "lib",
   "scripts": {
     "test": "jest",
-    "build": "rm ./lib/* && tsc",
+    "build": "rm -rf ./lib/* && tsc",
     "dev": "ts-node ./src/index.ts"
   },
   "repository": {

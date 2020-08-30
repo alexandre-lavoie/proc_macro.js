@@ -1,8 +1,7 @@
 import TokenStream from "./token_stream";
-export * from "./token_stream";
-export * from "./token";
-export * from "./tokens";
-export * from "./interfaces";
+import { Group, Ident, Punct, Literal } from "./tokens";
+
+export { TokenStream, Group, Ident, Punct, Literal };
 
 export type ParsingFunction = (tokenString: TokenStream) => TokenStream;
 
