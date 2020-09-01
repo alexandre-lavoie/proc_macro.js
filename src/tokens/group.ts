@@ -1,8 +1,11 @@
-import Token from '../token';
-import TokenStream from '../token_stream';
+import Token from './token';
+import { TokenStream } from '..';
 
 type Delimiter = 'brace' | 'bracket' | 'parenthesis' | 'none';
 
+/**
+ * A collection of tokens delimited by `{}`, `[]`, or `()`.
+ */
 export default class Group extends Token {
     public readonly delimiters: Delimiter;
     public readonly tokenStream: TokenStream;
@@ -13,7 +16,15 @@ export default class Group extends Token {
         this.tokenStream = tokenStream;
     }
 
-    public static tokenizeNext(tokenString: string): [Group, string] {
+    public eq(other: any): boolean {
+        if(other instanceof Group) {
+            return this.delimiters === other.delimiters && this.tokenStream.eq(other.tokenStream); 
+        }
+
+        return false;
+    }
+
+    public static tokenize(tokenString: string): [Group, string] {
         // Assumes that current token is a delimiter.
         let openDelimiter = tokenString[0];
         let closeDelimiter: string;
@@ -26,7 +37,7 @@ export default class Group extends Token {
         }
 
         let delimiterCounter = 1;
-        let pointer = 1;
+        let pointer = 0;
 
         loop:
         while(pointer < tokenString.length) {
@@ -41,7 +52,7 @@ export default class Group extends Token {
             }
         }
 
-        if(delimiterCounter !== 0) throw "Group is never closed.";
+        if(delimiterCounter !== 0) throw Error("FATAL ERROR: Group is never closed.");
 
         let innerTokenStream = TokenStream.tokenize(tokenString.substring(1, pointer));
 
@@ -64,7 +75,7 @@ export default class Group extends Token {
             case ']':
                 return 'bracket';
             default:
-                throw Error("Char is not a group delimiter.");
+                throw Error("FATAL ERROR: Char is not a group delimiter.");
         }
     }
 
@@ -95,7 +106,7 @@ export default class Group extends Token {
             case '[':
                 return ']';
             default:
-                throw Error("Char is not a group delimiter.");
+                throw Error("FATAL ERROR: Char is not a group delimiter.");
         }
     }
 

@@ -1,5 +1,8 @@
-import Token from '../token';
+import Token from './token';
 
+/**
+ * A non-literal token used to identify object (such as variables, conditions, etc).
+ */
 export default class Ident extends Token {
     public readonly value: string;
 
@@ -8,19 +11,27 @@ export default class Ident extends Token {
         this.value = value;
     }
 
-    public static tokenizeNext(token_string: string): [Ident, string] {
-        let pointer = 0;
-        let tokens = token_string[0];
+    public eq(other: any): boolean {
+        if(other instanceof Ident) {
+            return other.value === this.value;
+        }
+        
+        return false;
+    }
 
-        while(pointer < token_string.length && /^[a-zA-Z_][a-zA-Z0-9_]*?$/.test(tokens)) {
-            tokens += token_string[++pointer];
+    public static tokenize(tokenString: string): [Ident, string] {
+        let pointer = 0;
+        let tokens = tokenString[0];
+
+        while(pointer < tokenString.length && /^[a-zA-Z_][a-zA-Z0-9_]*?$/.test(tokens)) {
+            tokens += tokenString[++pointer];
         } 
 
         if(pointer === 0) {
             throw Error("Next token is not a ident.");
         }
 
-        return [new Ident(token_string.substring(0, pointer)), token_string.substring(pointer)];
+        return [new Ident(tokenString.substring(0, pointer)), tokenString.substring(pointer)];
     }
 
     public toParenthesisString(): string {

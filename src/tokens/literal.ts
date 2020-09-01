@@ -1,7 +1,10 @@
-import Token from '../token';
+import Token from './token';
 
-type LiteralType = 'string' | 'number';
+type LiteralType = 'string' | 'number' | 'none';
 
+/**
+ * A value (string, number).
+ */
 export default class Literal extends Token {
     public readonly value: string;
     public readonly type: LiteralType;
@@ -12,7 +15,15 @@ export default class Literal extends Token {
         this.type = type;
     }
 
-    public static tokenizeNext(token_string: string): [Literal, string] {
+    public eq(other: any): boolean {
+        if(other instanceof Literal) {
+            return other.value === this.value && other.type === this.type;
+        }
+        
+        return false;
+    }
+
+    public static tokenize(token_string: string): [Literal, string] {
         let pointer = 0;
         let type: LiteralType;
         let tokens = token_string[pointer];
@@ -29,6 +40,8 @@ export default class Literal extends Token {
             let matching_token = tokens;
 
             while(pointer < token_string.length && token_string[++pointer] != matching_token) {};
+
+            pointer++;
         } else {
             throw Error("Next token is not a literal.")
         }
