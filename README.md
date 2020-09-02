@@ -1,8 +1,18 @@
 # proc_macro.js
 
-Proc_macro.js is a JavaScript/TypeScript implementation of [Rust-lang](https://www.rust-lang.org/) procedural macros 🔥. The goal of this project is to combine the ideas from [syn](https://github.com/dtolnay/syn), [quote](https://github.com/dtolnay/quote), [proc_macro](https://doc.rust-lang.org/proc_macro/), and [proc_macro2](https://docs.rs/proc-macro2/1.0.19/proc_macro2/) in one comprehensive parsing package. Unlike [sweet.js](https://www.sweetjs.org/), the goal is to write hygenic/unhygenic macros that require only vanilla JavaScript. This comes with the caveat of JIT and [tagged templates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals).
+**proc_macro.js** is a JavaScript/TypeScript implementation of [Rust](https://www.rust-lang.org/) procedural macros 🔥. The goal of this project is to combine the ideas from [syn](https://github.com/dtolnay/syn), [quote](https://github.com/dtolnay/quote), [proc_macro](https://doc.rust-lang.org/proc_macro/), and [proc_macro2](https://docs.rs/proc-macro2/1.0.19/proc_macro2/) in one comprehensive parsing package. 
+
+Unlike [sweet.js](https://www.sweetjs.org/), the goal is to write hygenic/unhygenic macros that require only vanilla JavaScript. This comes with the caveat of JIT and [tagged templates](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals). 
+
+You can find more information on the [package website](https://proc-macro-js.herokuapp.com/).
 
 **Please note that this project is still in development. Feel free to report any bugs on GitHub!**
+
+## Installing
+
+```
+npm install --save proc_macro
+```
 
 ## Sample using ES6
 

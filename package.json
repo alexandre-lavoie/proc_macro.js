@@ -1,6 +1,6 @@
 {
     "name": "proc_macro",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "description": "A JavaScript implementation of proc_macros.",
     "main": "lib/index.js",
     "types": "lib",
